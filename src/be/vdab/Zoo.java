@@ -15,75 +15,38 @@ public class Zoo {
         this.whales = new Animal[0];
     }
 
-    public void insertAnimalIntoArray(Animal animal) {
+    public void addAnimal(Animal animal) {
         Animal[] newAnimalArray;
         switch (animal.getAnimalType()) {
             case "Cow":
-                newAnimalArray = new Animal[cows.length + 1];
-
-                if (cows.length != 0) {
-                    for (int i = 0; i < cows.length; i++) {
-                        newAnimalArray[i] = cows[i];
-                    }
-                }
-
-                newAnimalArray[cows.length] = animal;
-                cows = newAnimalArray;
-
+                cows = insertAnimalIntoArray(animal, cows);
                 break;
             case "Monkey":
-                newAnimalArray = new Animal[monkeys.length + 1];
-
-                if (monkeys.length != 0) {
-                    for (int i = 0; i < monkeys.length; i++) {
-                        newAnimalArray[i] = monkeys[i];
-                    }
-                }
-
-                newAnimalArray[monkeys.length] = animal;
-                monkeys = newAnimalArray;
-
+                monkeys = insertAnimalIntoArray(animal, monkeys);
                 break;
             case "Sheep":
-                newAnimalArray = new Animal[sheep.length + 1];
-
-                if (sheep.length != 0) {
-                    for (int i = 0; i < sheep.length; i++) {
-                        newAnimalArray[i] = sheep[i];
-                    }
-                }
-
-                newAnimalArray[sheep.length] = animal;
-                sheep = newAnimalArray;
-
+                sheep = insertAnimalIntoArray(animal, sheep);
                 break;
             case "Tiger":
-                newAnimalArray = new Animal[tigers.length + 1];
-
-                if (tigers.length != 0) {
-                    for (int i = 0; i < tigers.length; i++) {
-                        newAnimalArray[i] = tigers[i];
-                    }
-                }
-
-                newAnimalArray[tigers.length] = animal;
-                tigers = newAnimalArray;
-
+                tigers = insertAnimalIntoArray(animal, tigers);
                 break;
             case "Whale":
-                newAnimalArray = new Animal[whales.length + 1];
-
-                if (whales.length != 0) {
-                    for (int i = 0; i < whales.length; i++) {
-                        newAnimalArray[i] = whales[i];
-                    }
-                }
-
-                newAnimalArray[whales.length] = animal;
-                whales = newAnimalArray;
-
+                whales = insertAnimalIntoArray(animal, whales);
                 break;
         }
+    }
+
+    private Animal[] insertAnimalIntoArray(Animal animal, Animal[] animals) {
+        Animal[] newAnimalArray = new Animal[animals.length + 1];
+
+        if (animals.length != 0) {
+            for (int i = 0; i < animals.length; i++) {
+                newAnimalArray[i] = animals[i];
+            }
+        }
+
+        newAnimalArray[animals.length] = animal;
+        return newAnimalArray;
     }
 
     public void printZooAnimals() {
